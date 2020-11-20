@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neumorphic Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+ 
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
+
+:root{
+  --value : 50%;
+  --back-color : #f0eeeb;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #ebecf0;
+}
+.container{
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 1000px;
+}
+.box{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 20px;
+  padding: 10px 10px;
+}
+.neumorphic-slider{
+  display: block;
+  top:28px;
+  width: 100%;
+  position: absolute;
+}
+.background{
+  height: 25px;
+  background-color: var(--back-color);
+  border-radius: 50px;
+  box-shadow: -4px -4px 12px rgb(255, 255, 255), 4px 4px 12px rgba(121, 130, 160, 0.747);
+  width: calc(100%+20px);
+  margin-left: -10px;
+}
+.line{
+  height: 16px;
+  background: linear-gradient(to right, #185ef0, #30cfd0);
+  margin-top: -20px;
+  margin-left: -6px;
+  border-radius: 8px;
+  opacity: 1;
+  width: calc(var(--value) + 4px);
+}
+.picker{
+  box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), 0px 0px 15px rgba(55, 84, 170, 0.3);
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--back-color);
+  left: var(--value);
+  top:3px;
+  margin-left: -10px;
+  cursor: pointer;
+}
+
+.popover{
+  position: absolute;
+  background-color: var(--back-color);
+  left: var(--value);
+  font-weight: 600;
+  width: 60px;
+  height: 35px;
+  top:-50px;
+  margin-left: -30px;
+  box-shadow: -2px -2px 6px rgb(255, 255, 255), 2px 2px 6px rgba(121, 130, 160, 0.747);
+  color: #6d7587;
+  padding: 8px 0;
+  text-align: center;
+}
+.popover::after{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: -6px;
+  left: 50%;
+  margin-left: -6px;
+  border-style: solid;
+  border-width: 6px 6px 0 6px;
+  border-color: var(--back-color) transparent transparent transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>    
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <div class="neumorphic-slider" onselectstart="return false">
+        <div class="background"></div>
+        <div class="line"></div>
+        <div class="picker"></div>
+        <div class="popover">50%</div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+$('.picker').on('mousedown', function () {
+  $(document).on('mousemove.mm', function (e){
+    var new_value = 0;
+    if(e.clientX<$('.neumorphic-slider').offset().left){
+      new_value = '0%';
+    } else if(e.clientX > $('.neumorphic-slider').offset().left +
+     $('.neumorphic-slider').width() -10){
+      new_value = '100%';
+    } else {
+      new_value = ((e.clientX - $('.neumorphic-slider').offset().left)/
+      ($('.neumorphic-slider').width() - 10) * 100).toFixed(0) + '%';
+    }
+    document.documentElement.style.setProperty('--value', new_value);
+    $('.popover').text(new_value);
+  });
+  $(document).on('mouseup.mu', function() {
+    $(document).off('mousemove.mm');
+    $('.picker').off('mouseup.mu');
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</div>    
+</body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <link href="main.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+  
+    <div class="container">
+        <div class="box">
+
+            <ul class="directory-list">
+                <li>
+                  assets
+                  <ul>
+                    <li ondragstart="dragStart(event)" draggable="true" id="assets">
+                      css
+                      <ul>
+                        <li ondragstart="dragStart(event)" draggable="true" id="typography">
+                          typography.css
+                        </li>
+                        <li ondragstart="dragStart(event)" draggable="true" id="layout">layout.css</li>
+                        <li ondragstart="dragStart(event)" draggable="true" id="modules">modules.css</li>
+                        <li ondragstart="dragStart(event)" draggable="true" id="states">states.css</li>
+                        <li ondragstart="dragStart(event)" draggable="true" id="theme">theme.css</li>
+                      </ul>
+                    </li>
+                    
+                  </ul>
+                </li>
+              </ul>
+        </div>
+        <div class="fixed-option">
+            <i class="fa fa-trash-o" style="font-size:36px"></i>
+        </div>
+    </div>
+
+  
+
+    <p>Drag the p element back and forth between the two rectangles:</p>
+
+    <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <p ondragstart="dragStart(event)" draggable="true" id="dragtarget">
+        Drag me!
+      </p>
+    </div>
+
+    <div
+      class="droptarget directory-list"
+      ondrop="drop(event)"
+      ondragover="allowDrop(event)"
+    ></div>
+
+    <p id="demo"></p>
+
+
+  </body>
+  <script src="ctrl.js"></script>
+</html>
